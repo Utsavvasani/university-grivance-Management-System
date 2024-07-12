@@ -1,0 +1,155 @@
+{%load static%}
+{%include 'header.html'%}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+            <div class="row ">
+             
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-row justify-content-between">
+                      <h4 class="card-title">Manage Complains Status</h4>
+                      
+                    </div>
+                    <br>
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                          <div class="card-body">
+                           
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>ID</th>
+                                    <th>Code</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                    <th>Send By</th>
+                                    <th>Solved By</th>
+                                    <th>Date of Grievance</th>
+                                    <th>Date of Solve</th>
+                                    <th>state</th>
+                                    <th>Remark</th>
+                                    <th>Actions</th>
+                                    
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    {%for i in grievance%}
+                                  <tr>
+                                    <td style="color:white;"> {{i.id}} </td>
+                                    <td style="color:white;"> {{i.complainCode}} </td>
+                                    <td style="color:white;"> {{i.category.typeName}} </td>
+                                    <td style="color:white;"> {{i.description}} </td>
+                                    {% if i.image %}
+                                    <td style="color:white;"> <img src="{{i.image.url}}" height="100%" width="100%"></td>
+                                    {%else%}
+                                    <td style="color:white;"> <img src="" height="100%" width="100%" alt="None"></td>
+                                    {%endif %}
+                                   
+                                    <td style="color:white;"> {{i.nameOfComplainant.userName}} </td>
+                                    <td style="color:white;"> {{i.nameOfSolver.userName}} </td>
+                                    <td style="color:white;"> {{i.grievanceDate}} </td>
+                                    <td style="color:white;"> {{i.solvingDate}} </td>
+                                    <td>
+                                      {%if i.status  == 0 %}
+                                      
+                                      <div class="badge badge-outline-warning">Pending</div>
+                                      {%elif i.status == 1%}
+                                      <div class="badge badge-outline-danger">Rejected</div>
+                                      {% else %}
+                                      <div class="badge badge-outline-success">Solved</div>
+                                      
+                                      {%endif%}
+                                    </td>
+                                    <td style="color:white;"> {{i.remark}} </td>
+                                    <td>
+                                          <button class="btn btn-inverse-warning btn-fw" data-bs-toggle="modal" data-bs-target="#staticBackdropp{{i.id}}" type="button"> Actions </button>
+                                          <div class="modal fade" id="staticBackdropp{{i.id}}"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="staticBackdropLabel" style="color:white;">GRIEVANCE CODE :{{i.complainCode}}</h5>
+                                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  <form method = "post" action="/updateGrievance/{{i.id}}" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="form-group">
+                                                      </div>
+                                                      <label for="validationCustom03" class="form-label" style="color:white;">Change Status</label>
+                                                     
+                                                      <select class="form-select" name="status" value={{i.status}} id="status"  aria-label="Default select example">
+                                                       
+                                                        <option value="2">Solved</option>
+                                                        <option value="1">Rejected</option>
+                                                        
+                                                      </select>
+                                                    <br>
+                                                    <br>
+                                                    <div class="col-md-10">
+                                                      <label for="validationCustom03" class="form-label" style="color:white;">Remark</label>
+                                                      <input type="textarea" class="form-control" id="remark" name="remark" value="{{i.remark}}" required>
+                                                      
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                  
+                                                  <button type="button" class="btn btn-inverse-danger btn-fw" data-bs-dismiss="modal">Close</button>
+                                                  <input type="submit" class="btn btn-inverse-success btn-fw" value="update"></input>
+                                                </form>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                       
+                                  </td>
+                                    </tr>{%endfor%}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+          <!-- content-wrapper ends -->
+        </div>
+          </div>
+        <!-- content-wrapper ends -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{%static 'assets/vendors/js/vendor.bundle.base.js'%}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{%static 'assets/vendors/chart.js/Chart.min.js'%}"></script>
+    <script src="{%static 'assets/vendors/progressbar.js/progressbar.min.js'%}"></script>
+    <script src="{%static 'assets/vendors/jvectormap/jquery-jvectormap.min.js'%}"></script>
+    <script src="{%static 'assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js'%}"></script>
+    <script src="{%static 'assets/vendors/owl-carousel-2/owl.carousel.min.js'%}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{%static 'assets/js/off-canvas.js'%}"></script>
+    <script src="{%static 'assets/js/hoverable-collapse.js'%}"></script>
+    <script src="{%static 'assets/js/misc.js'%}"></script>
+    <script src="{%static 'assets/js/settings.js'%}"></script>
+    <script src="{%static 'assets/js/todolist.js'%}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{%static 'assets/js/dashboard.js'%}"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product Catalogue</title>
+	<style>
+		body {
+			background-color: #f1f1f1;
+		}
+		.container {
+			max-width: 800px;
+			margin: 50px auto;
+			background-color: #fff;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+			border-radius: 10px;
+			overflow: hidden;
+			padding: 20px;
+			position: relative;
+		}
+		.blur-bg {
+			background: rgba(255, 255, 255, 0.8);
+			backdrop-filter: blur(10px);
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: -1;
+		}
+		table {
+			border-collapse: collapse;
+			margin-top: 20px;
+			width: 100%;
+			border: none;
+		}
+		td, th {
+			padding: 10px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+		th {
+			background-color: #f2f2f2;
+		}
+		td:first-child {
+			padding-left: 30px;
+		}
+		td:last-child {
+			padding-right: 30px;
+		}
+		img {
+			height: 50px;
+			width: auto;
+		}
+		h1 {
+			font-size: 36px;
+			margin-bottom: 20px;
+			color: #333;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Registration</h1>
+		<div class="blur-bg"></div>
+		<table>
+			<thead>
+				<tr>
+					<th>ID No.</th>
+					<th >Image</th>
+					<th >UniqueId</th>
+					<th >Email</th>
+					
+</tr>
+			</thead>
+			<tbody>
+				{%for i in data%}
+				
+					<tr >
+						<td >{{i.id}}</td>
+						<td ><img src="{{i.image.path}}" style="width:20%;height:20%;"></img></td>
+						<td>{{i.uniqueId}}</td>
+						<td>{{i.email}}</td>
+						 </tr>
+				{%endfor%}
+			</tbody>
+        </table>
+    </div>
+</body>
+</head>
+</html>

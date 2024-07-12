@@ -1,0 +1,140 @@
+{%load static%}
+{%include 'header.html'%}
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-8">
+                        <h5 class="mb-0">Total Users</h5>
+                        <div class="d-flex align-items-center align-self-start">
+                          <br>
+                          <br>
+                          <br>
+                          <h3 class="mb-0 text-muted">{{Count}}</h3>
+                          </div>
+                      </div>
+                      <div class="col-3">
+                        <i class="icon-lg mdi mdi-account-multiple text-primary ml-auto"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-8">
+                        <h5 class="mb-0">Pending Grievance</h5>
+                        <div class="d-flex align-items-center align-self-start">
+                          <br>
+                          <br>
+                          <br>
+                          <h3 class="mb-0 text-muted">{{Pending}}</h3>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <i class="icon-lg mdi mdi-calendar-clock text-warning ml-auto"></i>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-8">
+                        <h5 class="mb-0">Solved Grievance</h5>
+                        <div class="d-flex align-items-center align-self-start">
+                          <br>
+                          <br>
+                          <br>
+                          <h3 class="mb-0 text-muted">{{solved}}</h3>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                        <i class="icon-lg mdi mdi-check-all text-success ml-auto"></i>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-8">
+                        <h5 class="mb-0">Forcefully Rejected Grievance</h5>
+                        <div class="d-flex align-items-center align-self-start">
+                          <br>
+                          <br>
+                          <br>
+                          <h3 class="mb-0 text-muted">{{Rejected}}</h3>
+                        </div>
+                      </div>
+                      <div class="col-3">
+                         <i class="icon-lg mdi mdi-block-helper text-danger ml-auto"></i>
+                      </div>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" >
+              <div class="col-xl-12 grid-margin "style="height:100px;">
+                  <div class="card">
+                    <div class="card-body">
+                       <div class="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel" id="owl-carousel-basic">
+                        <div class="item">
+                          <img src="{%static 'assets/images/GRC.jpg'%}" alt="">
+                        </div>
+                        <div class="item">
+                          <img src="{%static 'assets/images/GRC.jpg'%}" alt="">
+                        </div>
+                        <div class="item">
+                          <img src="{%static 'assets/images/GRC.jpg'%}" alt="">
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- content-wrapper ends -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="{%static 'assets/vendors/js/vendor.bundle.base.js'%}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="{%static 'assets/vendors/chart.js/Chart.min.js'%}"></script>
+    <script src="{%static 'assets/vendors/progressbar.js/progressbar.min.js'%}"></script>
+    <script src="{%static 'assets/vendors/jvectormap/jquery-jvectormap.min.js'%}"></script>
+    <script src="{%static 'assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js'%}"></script>
+    <script src="{%static 'assets/vendors/owl-carousel-2/owl.carousel.min.js'%}"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{%static 'assets/js/off-canvas.js'%}"></script>
+    <script src="{%static 'assets/js/hoverable-collapse.js'%}"></script>
+    <script src="{%static 'assets/js/misc.js'%}"></script>
+    <script src="{%static 'assets/js/settings.js'%}"></script>
+    <script src="{%static 'assets/js/todolist.js'%}"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="{%static 'assets/js/dashboard.js'%}"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
